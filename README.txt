@@ -15,8 +15,8 @@ end
 
 Creates two workers,
 
-# resque-milosh-toys
-# resque-milosh-relax
+# resque-milosh-toys   # => QUEUES=catnip,fly rake resque:work
+# resque-milosh-relax  # => QUEUES=sleep,window rake resque:work
 
 
 God::Watch::Resque will stop and start your worker based on the conditions of worker_limit
