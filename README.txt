@@ -30,8 +30,9 @@ God::Watch::Resque will stop and start your worker based on the conditions of wo
 
   w.transition(:stop, :start) do |on|
     on.condition(:resque_under) do |c|
-    c.queues   = w.worker_limits
-    c.running  = false
+    	c.queues   = w.worker_limits
+    	c.running  = false
+		end
   end
 
 Each god condition evaluates to this:
