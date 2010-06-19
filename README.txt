@@ -1,3 +1,46 @@
+Rough draft for working with resque with god
+
+God::Watch::Resque.worker do |w|
+  w.worker_group = 'milosh'
+  w.worker_id = 'toys'
+  w.worker_queues = ['catnip', 'fly']
+  w.worker_limit << ['fly', 100]
+end
+
+God::Watch::Resque.worker do |w|
+  w.worker_group = 'milosh'
+  w.worker_id = 'relax'
+  w.worker_queues = ['sleep', 'window']
+end 
+
+Creates two workers,
+
+# resque-milosh-toys
+# resque-milosh-relax
+
+
+God::Watch::Resque will stop and start your worker based on the conditions of worker_limit
+  
+  w.transition(:up, :stop) do |on|
+    on.condition(:resque_over) do |c|
+      c.queues   = w.worker_limits
+      c.running  = true
+    end
+  end
+
+  w.transition(:stop, :start) do |on|
+    on.condition(:resque_under) do |c|
+    c.queues   = w.worker_limits
+    c.running  = false
+  end
+
+Each god condition evaluates to this:
+
+  def test
+    self.queues.any? do |queue, limit|
+    Resque.size(queue) > limit
+  end
+
 god
     by Tom Preston-Werner
        Kevin Clark (kqueue/netlink support)
@@ -5,7 +48,7 @@ god
     http://god.rubyforge.org
 
 == DESCRIPTION:
-  
+
 God is an easy to configure, easy to extend monitoring framework written 
 in Ruby.
 
