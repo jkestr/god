@@ -20,7 +20,7 @@ module God
           w.group = 'resque'
           w.name  = "resque-#{w.worker_name}-#{w.worker_id}".gsub(/\*/,'star')
           w.start = "rake resque:work"
-          w.env   = { "QUEUE" => w.worker_queues }
+          w.env   = { "QUEUE" => w.worker_queues.join(",") }
         
           w.transition(:init, { true => :up, false => :start }) do |on|
             on.condition(:process_running) do |c|
