@@ -6,6 +6,7 @@ module God
 
       extend Forwardable
       def_delegators :@process, :worker_name, :worker_id, :worker_queues, :worker_limits
+      def_delegators :@process, :worker_name=, :worker_id=, :worker_queues=, :worker_limits=
 
       def initialize
         super
