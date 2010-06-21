@@ -5,7 +5,7 @@ module God
     class Resque < Watch
 
       extend Forwardable
-      def_delegators :@process, :worker_name, :worker_id, :worker_queues, :worker_limit
+      def_delegators :@process, :worker_name, :worker_id, :worker_queues, :worker_limits
 
       def initialize
         super
