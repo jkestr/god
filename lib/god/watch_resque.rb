@@ -18,7 +18,7 @@ module God
         God.task(God::Watch::Resque) do |w|
           yield w
           w.group = 'resque'
-          w.name  = "resque-#{w.worker_name}-#{worker_id}".gsub(/\*/,'star')
+          w.name  = "resque-#{w.worker_name}-#{w.worker_id}".gsub(/\*/,'star')
           w.start = "rake resque:work"
           w.env   = { "QUEUE" => w.worker_queues }
         
