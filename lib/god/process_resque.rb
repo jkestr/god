@@ -7,6 +7,7 @@ module God
       def initialize
         super
         @worker_limits = []
+        @worker_queues = [] 
       end
 
       def valid?
