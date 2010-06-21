@@ -43,14 +43,14 @@ module God
           end
         end
 
-        w.transition(:up, :stop) do |on|
+        w.transition(:up, :sleeping) do |on|
           on.condition(:resque_over) do |c|
             c.queues   = w.worker_limits
             c.running  = true
           end
         end
 
-        w.transition(:stop, :start) do |on|
+        w.transition(:sleeping, :start) do |on|
           on.condition(:resque_under) do |c|
             c.queues   = w.worker_limits
             c.running  = false
