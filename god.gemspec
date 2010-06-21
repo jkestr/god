@@ -4,7 +4,7 @@ Gem::Specification.new do |s|
 
   s.name = 'god'
   s.version = '0.10.1'
-  s.date = '2010-05-17'
+  s.date = '2010-06-21'
 
   s.summary = "Process monitoring framework."
   s.description = "An easy to configure, easy to extend monitoring framework written in Ruby."
@@ -68,6 +68,8 @@ Gem::Specification.new do |s|
     lib/god/conditions/memory_usage.rb
     lib/god/conditions/process_exits.rb
     lib/god/conditions/process_running.rb
+    lib/god/conditions/resque_over.rb
+    lib/god/conditions/resque_under.rb
     lib/god/conditions/tries.rb
     lib/god/configurable.rb
     lib/god/contact.rb
@@ -89,6 +91,7 @@ Gem::Specification.new do |s|
     lib/god/logger.rb
     lib/god/metric.rb
     lib/god/process.rb
+    lib/god/process_resque.rb
     lib/god/registry.rb
     lib/god/simple_logger.rb
     lib/god/socket.rb
@@ -101,6 +104,7 @@ Gem::Specification.new do |s|
     lib/god/timeline.rb
     lib/god/trigger.rb
     lib/god/watch.rb
+    lib/god/watch_resque.rb
     test/configs/child_events/child_events.god
     test/configs/child_events/simple_server.rb
     test/configs/child_polls/child_polls.god
