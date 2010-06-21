@@ -47,6 +47,8 @@ require 'god/conditions/http_response_code'
 require 'god/conditions/disk_usage'
 require 'god/conditions/complex'
 require 'god/conditions/file_mtime'
+require 'god/conditions/resque_over'
+require 'god/conditions/resque_under'
 
 require 'god/contact'
 require 'god/contacts/email'
@@ -74,11 +76,13 @@ require 'god/driver'
 
 require 'god/metric'
 require 'god/watch'
+require 'god/watch_resque'
 
 require 'god/trigger'
 require 'god/event_handler'
 require 'god/registry'
 require 'god/process'
+require 'god/process_resque'
 
 require 'god/sugar'
 
