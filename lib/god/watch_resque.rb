@@ -51,14 +51,12 @@ module God
           w.transition(:up, :sleeping) do |on|
             on.condition(:resque_over) do |c|
               c.queues   = w.worker_limits
-              c.running  = true
             end
           end
 
           w.transition(:sleeping, :start) do |on|
             on.condition(:resque_under) do |c|
               c.queues   = w.worker_limits
-              c.running  = false
             end
           end
         end
