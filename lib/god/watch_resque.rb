@@ -5,7 +5,7 @@ module God
     class Resque < Watch
 
       extend Forwardable
-      def_delegators :@process, :worker_group, :worker_id, :worker_queues, :worker_limit
+      def_delegators :@process, :worker_name, :worker_id, :worker_queues, :worker_limit
 
       def initialize
         super
@@ -17,7 +17,7 @@ module God
         God.task(God::Watch::Resque) do |w|
           yield w
           w.group = 'resque'
-          w.name  = "resque-#{w.worker_group}-#{worker_id}".gsub(/\*/,'star')
+          w.name  = "resque-#{w.worker_name}-#{worker_id}".gsub(/\*/,'star')
           w.start = "rake resque:work"
           w.env   = { "QUEUE" => w.worker_queues }
         
