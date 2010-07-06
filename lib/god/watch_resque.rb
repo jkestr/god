@@ -10,7 +10,7 @@ module God
 
       def initialize
         super
-        @process = God::Process::Resque.new
+        @process = God::ProcessResque.new
         self.env ||= {}
       end
 

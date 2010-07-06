@@ -1,6 +1,5 @@
 module God
-  class Process
-    class Resque < Process
+  class ProcessResque < Process
 
       attr_accessor :worker_name, :worker_id, :worker_queues, :worker_limits
 
@@ -30,7 +29,6 @@ module God
 
         return valid
       end
-      
-    end
+
   end
 end
